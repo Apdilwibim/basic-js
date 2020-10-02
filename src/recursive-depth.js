@@ -5,8 +5,8 @@ module.exports = class DepthCalculator {
     this.calculateDepth = this.calculateDepth.bind(this);
   }
   calculateDepth(value) {
-    return 1 + (arr instanceof Array ? arr.reduce(function (max, item) {
-      return Math.max(max, this.calculateDepth);
-    }, 0) : -1);
+    return Array.isArray(value) ?
+      1 + Math.max(...value.map(this.calculateDepth)) :
+      0;
   }
 };
